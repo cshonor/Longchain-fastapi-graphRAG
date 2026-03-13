@@ -30,6 +30,7 @@ llm_unified = init_chat_model(
     base_url=DEEPSEEK_BASE_URL,
 )
 
+# __name__ 是 Python 内置属性：直接运行本文件时为 "__main__"，被 import 时为模块名；据此区分执行/导入
 if __name__ == "__main__":
     # 方式1：调用直接创建的模型
     resp = deepseek_llm.invoke("你好，请介绍一下自己")
