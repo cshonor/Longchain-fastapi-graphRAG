@@ -2,9 +2,10 @@ from datetime import datetime
 
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
+from enum import Enum
 
 # 运行：
-#   uvicorn fastapi_learning_docs.02_fastapi_basics.demo:app --reload
+#   uvicorn fastapi_learning_docs.02_fastapi_basics.fastapi_pydantic_demo:app --reload
 # 文档：
 #   http://127.0.0.1:8000/docs
 
@@ -29,6 +30,12 @@ class ItemOut(BaseModel):
     item_id: int
     q: str | None = None
     note: str = Field(default="typed path + query params")
+
+
+# Enum 路径参数：限制只能传固定值（Swagger 会给下拉选项）
+class ModelName(str, Enum):
+    resnet = "resnet"
+    alexnet = "alexnet"
 
 
 # 最基础的 GET 接口
@@ -93,6 +100,12 @@ def response_model_example(user_id: int):
 @app.get("/items_out/{item_id}", response_model=ItemOut)
 def response_model_item_example(item_id: int, q: str | None = None):
     return {"item_id": item_id, "q": q, "extra": "will be removed"}
+
+
+# Enum 例子：/models/resnet 正常；/models/vgg16 -> 422
+@app.get("/models/{model_name}")
+def enum_path_param_example(model_name: ModelName):
+    return {"model": model_name, "message": f"加载 {model_name} 模型"}
 
 
 # async 路由示例：当内部需要 await（例如异步 IO）时使用 async def
