@@ -9,6 +9,8 @@ longchain/
 ├── longchain/       # LangChain 相关逻辑（链、提示、模型等）
 ├── fastapi_app/     # FastAPI 应用与学习笔记（见 fastapi_app/README.md；勿使用顶层目录名 `fastapi/`）
 ├── rag/             # RAG 检索增强生成相关
+├── graphrag/        # GraphRAG：图结构增强的检索与生成
+├── scs/             # SCS 相关逻辑
 ├── longgraph/       # LongGraph 图相关
 ├── mcp/             # MCP 相关
 ├── environment.yml  # Conda 环境配置
