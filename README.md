@@ -7,7 +7,7 @@
 ```
 longchain/
 ├── longchain/       # LangChain 相关逻辑（链、提示、模型等）
-├── fastapi/         # FastAPI 路由、接口与中间件
+├── fastapi_app/     # FastAPI 应用与学习笔记（见 fastapi_app/README.md；勿使用顶层目录名 `fastapi/`）
 ├── rag/             # RAG 检索增强生成相关
 ├── longgraph/       # LongGraph 图相关
 ├── mcp/             # MCP 相关
@@ -50,7 +50,7 @@ conda activate longchain-fastapi
 ### 4. 运行服务
 
 ```bash
-uvicorn main:app --reload
+uvicorn fastapi_app.main:app --reload
 ```
 
 ### 更新环境
