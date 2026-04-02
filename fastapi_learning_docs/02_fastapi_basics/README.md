@@ -46,3 +46,5 @@
 - [Query 请求参数 Demo（可直接跑）](./fastapi_query_params_demo.py)
 - [FastAPI Request Body（请求体 JSON）](./07_request_body.md)
 - [Request Body Demo（可直接跑）](./fastapi_request_body_demo.py)
+- [Request Body：多模型、embed、Body 标量](./08_request_body_multiple_embed.md)
+- [多 Body / embed / Body 标量 Demo（可直接跑）](./fastapi_multiple_body_demo.py)
