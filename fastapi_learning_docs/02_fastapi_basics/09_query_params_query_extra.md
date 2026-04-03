@@ -89,3 +89,74 @@ q: list[str] = Query(["foo", "bar"])
 q: list | None = Query(None)
 ```
 
+---
+
+## 5. 不写 `Query(...)` vs 写 `Query(...)`（什么时候需要它）
+
+大多数场景你直接写：
+
+```python
+q: int = 1
+```
+
+就够了（类型 + 默认值）。只有当你需要 **额外能力** 时才用 `Query(...)`。
+
+### 核心结论
+
+- **`q: int = 1`**  
+  普通 Query 参数：只有类型 + 默认值  
+  → 不能加校验、别名、描述等额外信息
+
+- **`q: int = Query(1)`**  
+  功能增强版 Query 参数  
+  → 可以加 `min_length` / `max_length` / `alias` / `pattern` / `description` 等
+
+### 等价对照
+
+- 带默认值
+
+```python
+q: int = 1
+```
+
+等价于
+
+```python
+q: int = Query(1)
+```
+
+- 可选参数
+
+```python
+q: str | None = None
+```
+
+等价于
+
+```python
+q: str | None = Query(None)
+```
+
+- 必填参数
+
+```python
+q: int
+```
+
+等价于
+
+```python
+q: int = Query(...)
+```
+
+### 什么时候必须用 `Query(...)`
+
+只有你需要下面这些能力时才用：
+
+- 长度限制：`min_length` / `max_length`
+- 模式校验：`pattern`
+- 参数别名：`alias="user-id"`
+- 文档说明：`title` / `description`
+- 标记废弃：`deprecated=True`
+- 多值列表：`list[str]`
+
