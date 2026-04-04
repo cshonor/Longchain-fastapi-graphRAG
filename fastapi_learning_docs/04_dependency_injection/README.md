@@ -4,3 +4,10 @@
 **核心目标**：掌握 IOC/DI 用法，解耦路由与资源（DB、用户、配置）。
 
 对照代码：`fastapi_app/dependencies/`、`db/session.py` 中 `get_db` 模式。
+
+---
+
+## 本章笔记
+
+- [依赖注入简介（`Depends` 与共享逻辑）](./01_di_introduction.md)
+- [Depends 入门 Demo（可直接跑）](./fastapi_depends_intro_demo.py)
