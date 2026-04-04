@@ -46,6 +46,8 @@
 - [Query 请求参数 Demo（可直接跑）](./fastapi_query_params_demo.py)
 - [FastAPI Request Body（请求体 JSON）](./07_request_body.md)
 - [Request Body Demo（可直接跑）](./fastapi_request_body_demo.py)
+- [表单数据 `Form`（x-www-form-urlencoded）](./22_form_urlencoded.md)
+- [Form 表单 Demo（含 HTML 测试页）](./fastapi_form_demo.py)
 - [Request Body：多模型、embed、Body 标量](./08_request_body_multiple_embed.md)
 - [多 Body / embed / Body 标量 Demo（可直接跑）](./fastapi_multiple_body_demo.py)
 - [Query 参数附加信息（Query 校验/别名/废弃）](./09_query_params_query_extra.md)
