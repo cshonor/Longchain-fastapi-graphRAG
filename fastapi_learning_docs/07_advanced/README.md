@@ -14,3 +14,5 @@
 - [WebSocket 鉴权 Demo](./fastapi_websocket_auth_demo.py)
 - [错误处理（HTTPException、自定义异常、422、复用默认处理器）](./02_exception_handling.md)
 - [错误处理 Demo](./fastapi_exception_handling_demo.py)
+- [后台任务 BackgroundTasks](./03_background_tasks.md)
+- [BackgroundTasks Demo](./fastapi_background_tasks_demo.py)
