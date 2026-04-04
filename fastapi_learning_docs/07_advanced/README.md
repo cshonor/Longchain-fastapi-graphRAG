@@ -18,3 +18,5 @@
 - [BackgroundTasks Demo](./fastapi_background_tasks_demo.py)
 - [启动与关闭（lifespan / on_event）](./04_lifespan_startup_shutdown.md)
 - [lifespan Demo](./fastapi_lifespan_demo.py)
+- [`request.state`（请求内附加数据）](./05_request_state.md)
+- [request.state Demo](./fastapi_request_state_demo.py)
