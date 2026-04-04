@@ -12,3 +12,5 @@
 - [WebSocket 核心用法（echo、Path/Query/Depends）](./01_websocket.md)
 - [WebSocket echo Demo](./fastapi_websocket_echo_demo.py)
 - [WebSocket 鉴权 Demo](./fastapi_websocket_auth_demo.py)
+- [错误处理（HTTPException、自定义异常、422、复用默认处理器）](./02_exception_handling.md)
+- [错误处理 Demo](./fastapi_exception_handling_demo.py)
