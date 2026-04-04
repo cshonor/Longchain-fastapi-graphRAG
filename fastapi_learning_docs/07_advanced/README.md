@@ -16,3 +16,5 @@
 - [错误处理 Demo](./fastapi_exception_handling_demo.py)
 - [后台任务 BackgroundTasks](./03_background_tasks.md)
 - [BackgroundTasks Demo](./fastapi_background_tasks_demo.py)
+- [启动与关闭（lifespan / on_event）](./04_lifespan_startup_shutdown.md)
+- [lifespan Demo](./fastapi_lifespan_demo.py)
