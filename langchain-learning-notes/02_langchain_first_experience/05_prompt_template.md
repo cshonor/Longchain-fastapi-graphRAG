@@ -1,19 +1,31 @@
-# LangChain 核心：`PromptTemplate` 与 `ChatPromptTemplate`
+# LangChain 核心笔记：`PromptTemplate` 全解析（含 `ChatPromptTemplate`）
 
 ## 一、核心定义
 
-**`PromptTemplate` / `ChatPromptTemplate` 用来把「模板」和「变量」拆开**：固定文案里留 `{占位符}`，运行时再 `format` / `invoke` 填入。  
-前者面向**单段字符串**；后者面向**对话消息列表**（system / human / ai 等），与 **ChatModel** 配套。
+**`PromptTemplate` 是 LangChain 里用来「动态生成提示词」的基础组件**：把**固定指令框架**和**变量**分开——模板里写 `{变量名}`，运行时再 `format` / `invoke` 填入。
 
-（与 [LLM / ChatModel](./04_llm_chatmodel_usage.md) 对照：补全模型多用 `PromptTemplate`；对话模型多用 `ChatPromptTemplate`。）
+在此基础上，**`ChatPromptTemplate`** 把同一思路用到**对话**：用 `system` / `human` 等角色拼出 **消息列表**，与 **ChatModel** 配套。
+
+（与 [LLM / ChatModel](./04_llm_chatmodel_usage.md) 对照：补全接口多用 `PromptTemplate`；对话接口多用 `ChatPromptTemplate`。）
 
 ---
 
-## 二、为什么要用模板？
+## 二、为什么要用它？（三大核心优势）
 
-1. **维护性**：提示集中在一处，改模板即可，少复制粘贴。  
-2. **多变量**：比零散 f-string 更易读；复杂场景可再拆子模板。  
-3. **接链（LCEL）**：`prompt | llm | ...` 与 Runnable 协议一致，便于组合与测试。
+### 1. 代码解耦，便于维护
+
+- **分离关注点**：提示长什么样、有哪些规则，与业务分支分开写。  
+- **一改全改**：模板只维护一处，避免多处复制粘贴后改漏。
+
+### 2. 支持多变量、复杂逻辑
+
+- 多个 `{var}` 一次传入，比到处拼 f-string 更清晰。  
+- 需要角色与人设时，用 **`ChatPromptTemplate`** 表达 system / human（及后续多轮）。
+
+### 3. 与 LangChain 生态兼容（LCEL）
+
+- 作为 Runnable 链的**起点**：`prompt | llm | parser` 等。  
+- 与 **LLM（补全）**、**ChatModel**、**OutputParser** 等同为管道中的一环，便于测试与扩展。
 
 ---
 
@@ -62,7 +74,9 @@ final_messages = chat_prompt.format_messages(
 
 ## 四、链式调用（LCEL）
 
-**类型要对齐**：`ChatPromptTemplate` 输出消息列表，应接 **ChatModel**；`PromptTemplate` 输出字符串，应接 **LLM（补全）**。
+**类型要对齐**：`ChatPromptTemplate` → **消息列表** → 应接 **ChatModel**；`PromptTemplate` → **字符串** → 应接 **LLM（补全）**。
+
+**常见误区**：不少教程把 **`ChatPromptTemplate | Tongyi`** 写在一起；`Tongyi` 属于**补全 LLM**，通常期望字符串输入，与 Chat 模板输出**不配套**。下面用**正确搭配**各给一例。
 
 ### 示例 A：`ChatPromptTemplate | ChatModel`
 
@@ -108,7 +122,7 @@ text = chain.invoke({"product": "保温杯"})
 
 ---
 
-## 五、f-string 与模板对比（直观）
+## 五、对比演示：f-string 与 `PromptTemplate`
 
 ```python
 product = "保温杯"
@@ -125,9 +139,10 @@ s2 = p.format(product=product)
 
 ---
 
-## 六、一句话
+## 六、一句话总结
 
-**Prompt 模板 = 把提示词结构化、参数化**；不改变模型本身能力，但让应用更好维护、更好接 **LCEL**。
+**`PromptTemplate`（及 `ChatPromptTemplate`）= 提示词的「封装器」。**  
+不改变模型本身能力，但能把「拼字符串的小脚本」收成**可维护、可扩展、方便上生产**的结构，并自然接入 **`prompt | llm | parser`** 这类链路。
 
 ---
 

@@ -12,4 +12,5 @@
 - [LLM 与 ChatModel（消息、分工与记忆）](./03_llm_and_chatmodel.md)
 - [LLM / ChatModel 使用总结（对比、`model` 参数、示例）](./04_llm_chatmodel_usage.md)
 - [LLM vs ChatModel 对比 Demo（Tongyi + ChatDeepSeek）](./demo_llm_chatmodel_compare.py)
+- [PromptTemplate / ChatPromptTemplate + LCEL Demo](./demo_prompt_template.py)
 - [PromptTemplate / ChatPromptTemplate 与 LCEL](./05_prompt_template.md)
