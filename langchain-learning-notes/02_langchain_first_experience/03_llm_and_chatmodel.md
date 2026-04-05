@@ -84,4 +84,5 @@
 ## 延伸阅读
 
 - 上一篇：[环境搭建 & 核心概念](./01_env_and_core_concepts.md)  
-- 相关：[基础链三要素 & 模块](./02_basic_chain_and_modules.md)
+- 相关：[基础链三要素 & 模块](./02_basic_chain_and_modules.md)  
+- 实践：[LLM / ChatModel 选型、`model` 参数与示例](./04_llm_chatmodel_usage.md)
